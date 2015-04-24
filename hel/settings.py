@@ -25,7 +25,7 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
-SITE_ID = 1
+#SITE_ID = 1
 
 # Application definition
 
@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'django_markdown',
+    'markdown_deux',
     'polls',
     'login',
 )
