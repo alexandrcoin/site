@@ -30,3 +30,6 @@ class Player(models.Model):
     team = models.ForeignKey('Team')
 
     objects = PlayerManager()
+
+    def __str__(self):
+        return self.user.username
