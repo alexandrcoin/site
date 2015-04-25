@@ -1,15 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import RequestContext, loader
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Team
 from .models import User
 
 
 def index(request):
-    response = ''
-    for i, teamobj in enumerate(Team.objects.all()):
-        response += "Team %i: %s <br>" % (i, teamobj)
-    return HttpResponse(response)
+    teams_list = Team.objects.all()
+    template = loader.get_template('teams/index.html')
+    context = RequestContext(request, {
+                             'teams_list': teams_list,
+                            })
+    return HttpResponse(template.render(context))
 
 def detail(request, teamid):
     try:
