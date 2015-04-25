@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'markdown_deux',
     'polls',
     'login',
+    'teams',
 )
 
 MIDDLEWARE_CLASSES = (
