@@ -8,7 +8,25 @@ class Team(models.Model):
     tag = models.CharField(max_length=16)
     description = models.TextField(max_length=1024)
     logo = models.ImageField()
+    players = models.ManyToManyField(User, through='Player')
+
+    def __str__(self):
+        return self.name
+
+
+class PlayerManager(models.Manager):
+    use_for_related_fields = True
+
+    def add_player(self, user, team):
+        if not user.team:
+            team.players.add(user)
+
+    def remove_player(self, user, team):
+        team.players.remove(user)
+
 
 class Player(models.Model):
     user = models.OneToOneField(User)
     team = models.ForeignKey('Team')
+
+    objects = PlayerManager()
