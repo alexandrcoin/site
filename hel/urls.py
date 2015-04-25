@@ -8,9 +8,8 @@ flatpages.register()
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^polls/', include('polls.urls', namespace='polls')),
-    #url(r'^pages/', include('django.contrib.flatpages.urls')),
+    url(r'^teams/', include('teams.urls', namespace='teams')),
     url(r'^markdown/', include( 'django_markdown.urls')),
     url(r'^admin/', include(admin.site.urls)),
-
     url(r'^account/', include('login.urls', namespace='login')),
 ]
