@@ -8,11 +8,8 @@ from .models import User
 
 def index(request):
     teams_list = Team.objects.all()
-    template = loader.get_template('teams/index.html')
-    context = RequestContext(request, {
-                             'teams_list': teams_list,
-                            })
-    return HttpResponse(template.render(context))
+    context = { 'teams_list': teams_list }
+    return render(request, 'teams/index.html', context)
 
 def detail(request, teamid):
     try:
