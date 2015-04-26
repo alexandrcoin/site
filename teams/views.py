@@ -12,8 +12,8 @@ def index(request):
     context = { 'teams_list': teams_list }
     return render(request, 'teams/index.html', context)
 
-def detail(request, teamid):
-    team = get_object_or_404(Team, id=teamid)
+def detail(request, team_id):
+    team = get_object_or_404(Team, id=team_id)
     context = {
         'teamname' : team.name,
         'member_list' : User.objects.filter(team__name=team.name)
