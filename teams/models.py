@@ -7,7 +7,7 @@ class Team(models.Model):
     institution = models.CharField(max_length=124) # university where team is from
     tag = models.CharField(max_length=16)
     description = models.TextField(max_length=1024)
-    logo = models.ImageField()
+    logo = models.ImageField(blank=True, upload_to='teams/media/')
     players = models.ManyToManyField(User, through='Player')
 
     def __str__(self):
