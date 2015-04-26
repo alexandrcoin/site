@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ teamname }}</h1> <br><br>
+    {% if member_list %}
+        <ul>
+        {% for member in member_list %}
+            <li> {{ member }} </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No member in team.</p>
+    {% endif %}
+{% endblock %}
